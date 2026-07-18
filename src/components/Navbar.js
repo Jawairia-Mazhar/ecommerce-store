@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ShoppingBag, Heart, ShoppingCart } from "lucide-react";
-import { useCart } from "@/context/cartContext";
+import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
   const { wishlist, cartCount } = useCart();
