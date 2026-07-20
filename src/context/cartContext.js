@@ -27,7 +27,7 @@ export function CartProvider({ children }) {
   }
 
   function updateQuantity(productId, quantity) {
-    if (quantity < 1) return;
+    if (quantity < 1) {removeFromCart(productId); return;}
     setCart((prev) =>
       prev.map((item) =>
         item.id === productId ? { ...item, quantity } : item

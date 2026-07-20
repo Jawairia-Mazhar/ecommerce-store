@@ -6,8 +6,9 @@ import { Heart} from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export default function ProductCard({ product }) {
-    const { addToCart, toggleWishlist, wishlist } = useCart();
+    const { addToCart, cart, updateQuantity, toggleWishlist, wishlist } = useCart();
     const inWishlist = wishlist.some(item => item.id === product.id);
+    const cartItem = cart.find(item => item.id === product.id);
 
     return (
         <div className = "flex flex-col mt-2">
@@ -40,12 +41,29 @@ export default function ProductCard({ product }) {
 
       <div className="flex items-center justify-between mt-2">
         <span className="font-semibold text-gray-900">${product.price}</span>
-        <button
+        { cartItem ? (<div className="flex items-center gap-2">
+          <button
+            onClick={() => updateQuantity(product.id, cartItem.quantity - 1)}
+            className="w-7 h-7 border rounded flex items-center justify-center"
+          >
+          -
+          </button>
+          <span className="w-6 text-center">{cartItem ? cartItem.quantity : 0}</span>
+          <button
+            onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
+            className="w-7 h-7 border rounded flex items-center justify-center"
+          >
+          +
+          </button>
+        </div>)
+        :
+        (<button
           onClick={() => addToCart(product)}
           className="bg-black text-white text-xs px-3 py-1.5 rounded-md hover:bg-gray-800"
         >
           Add to Cart
-        </button>
+        </button>)
+        }        
       </div>
     </div>
   );
