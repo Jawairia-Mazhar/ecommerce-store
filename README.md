@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🛍️ Shoply
 
-## Getting Started
+A multi-category e-commerce store built with Next.js, showcasing modern data-fetching patterns and clean state management. Built as a portfolio capstone project to demonstrate readiness for full-stack development.
 
-First, run the development server:
+<!-- Add a screenshot or GIF of the app here -->
+<!-- ![Shoply Screenshot](./screenshot.png) -->
+
+## 🚀 Live Demo
+
+[View Live Demo](#) <!-- add your deployed link -->
+
+## ✨ Features
+
+- Multi-category product browsing (electronics, fashion, groceries, and more)
+- Product search and filtering
+- Cart and wishlist management using Context API
+- Server-side data fetching via Next.js Server Components
+- Responsive design across mobile, tablet, and desktop
+- Product data sourced from the [DummyJSON API](https://dummyjson.com/)
+
+## 🛠️ Tech Stack
+
+- **Framework:** Next.js (App Router, Server Components)
+- **Styling:** Tailwind CSS
+- **State Management:** Context API (cart & wishlist)
+- **Icons:** lucide-react
+- **Data Source:** DummyJSON API
+
+## 📦 Getting Started
+
+Clone the repo and install dependencies:
+
+```bash
+git clone https://github.com/Jawairia-Mazhar/shoply.git
+cd shoply
+npm install
+```
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 📁 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+shoply/
+├── app/                # Next.js App Router pages
+├── components/         # Reusable UI components (ProductCard, Navbar, etc.)
+├── context/             # Cart and wishlist Context providers
+├── lib/                # API helper functions
+└── public/              # Static assets
+```
 
-## Learn More
+## 🎯 What I Learned
 
-To learn more about Next.js, take a look at the following resources:
+- Working with Next.js Server Components for efficient data fetching
+- Managing global state (cart/wishlist) without external libraries using Context API
+- Structuring a scalable multi-page e-commerce flow
+- Debugging real-world UI logic issues (e.g. conditional rendering bugs)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📌 Roadmap
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- [ ] Add user authentication
+- [ ] Integrate a real payment gateway
+- [ ] Add order history and checkout flow
 
-## Deploy on Vercel
+## 📫 Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by [Jawairia Mazhar](https://github.com/Jawairia-Mazhar) — [LinkedIn](https://linkedin.com/in/jawairiamazhar21)
