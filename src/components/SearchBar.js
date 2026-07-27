@@ -8,7 +8,7 @@ const SearchBar = () => {
     const router = useRouter();
     const handleSearch = (e) => {
         e.preventDefault();
-        router.push(`/products?q=${searchText}`);
+        router.push(`/products?product=${searchText}`);
     }
 
   return (
