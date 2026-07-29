@@ -27,13 +27,38 @@ const page = () => {
 
         setOrderDetails(orderDetails) //order details saved
         clearCart(); //cart cleared!
-        setOrderPlaced(true); //order placed!
-    };
+        setOrderPlaced(true); //order placed! Will trigger the confirmation page to show
+    }; 
+    // This is what happen with orderDetails useState. By default it was kept null, then when the customer submits the checkout details, the orderDetails get updated to new object and we updated setOrderDetails with that.orderDetails hold the real data.
 
 //should I show the form, or the confirmation?
     if (orderPlaced) {
         return (
-            <h1>Order Confirmed.</h1>
+            <section className="max-w-2xl mx-auto px-4 py-16 text-center">
+            <h1 className="text-3xl font-bold text-green-600 mb-2">Order Confirmed!</h1>
+            <p className="text-gray-500 mb-8">Thank you, your order is on its way.</p>
+            
+            <div className="text-left bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                <h2 className="font-semibold text-gray-900 mb-2">Shipping Details</h2>
+                <p className="text-sm text-gray-700">{orderDetails.fullName}</p>
+                <p className="text-sm text-gray-700">{orderDetails.address}</p>
+                <p className="text-sm text-gray-700">{orderDetails.phone}</p>
+            </div>
+            <div className="text-left bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <h2 className="font-semibold text-gray-900 mb-4">Order Summary</h2>
+
+            {orderDetails.items.map((item) => (
+            <div key={item.id} className="flex justify-between text-sm text-gray-700 py-1">
+                <p>{item.title} × {item.quantity}</p>
+                <p>${(item.price * item.quantity).toFixed(2)}</p>
+            </div>
+            ))}
+            <div className="flex justify-between font-semibold text-gray-900 mt-4 pt-4 border-t border-gray-200">
+                <span>Total</span>
+                <span>${orderDetails.total.toFixed(2)}</span>
+            </div>
+            </div>
+            </section>
         );
     }
 
