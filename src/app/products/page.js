@@ -5,7 +5,7 @@ import FilterSidebar from "@/components/FilterSidebar"
 
 export default async function ProductsPage({searchParams}) {
   const products = await getProducts();
-  const { product, category } = await searchParams; //pulls out the property specifically from the URL 
+  const { product, category, sort } = await searchParams; //pulls out the property specifically from the URL 
 
   const categories = await getCategories();
 
@@ -21,6 +21,13 @@ export default async function ProductsPage({searchParams}) {
     if (category) {
       result = result.filter(pro => pro.category === category) //comparing two plain strings. of category button and URL
     }
+    if (sort === 'price-asc'){
+      result = result.sort((a, b) => a.price - b.price )
+    }
+    if (sort === 'price-desc'){
+      result = result.sort((a, b) => b.price - a.price )
+    }
+
     return result;
   }
 
