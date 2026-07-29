@@ -35,6 +35,10 @@ export function CartProvider({ children }) {
     );
   }
 
+  function clearCart() {
+    setCart([]);
+  }
+
   function toggleWishlist(product) {
     setWishlist((prev) => {
       const exists = prev.find((item) => item.id === product.id);
@@ -55,6 +59,7 @@ export function CartProvider({ children }) {
         addToCart,
         removeFromCart,
         updateQuantity,
+        clearCart,
         toggleWishlist,
         cartCount,
       }}
