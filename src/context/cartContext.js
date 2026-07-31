@@ -7,6 +7,7 @@ const CartContext = createContext(); // an empty box that will hold shared data 
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([]);
   const [wishlist, setWishlist] = useState([]);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   function addToCart(product) {
     setCart((prev) => {
@@ -49,6 +50,14 @@ export function CartProvider({ children }) {
     });
   }
 
+  function openDrawer(){
+    setIsDrawerOpen(true)
+  }
+  
+  function closeDrawer(){
+    setIsDrawerOpen(false)
+  }
+
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
   
   return (
@@ -56,11 +65,14 @@ export function CartProvider({ children }) {
       value={{
         cart,
         wishlist,
+        isDrawerOpen,
         addToCart,
         removeFromCart,
         updateQuantity,
         clearCart,
         toggleWishlist,
+        openDrawer,
+        closeDrawer,
         cartCount,
       }}
     >

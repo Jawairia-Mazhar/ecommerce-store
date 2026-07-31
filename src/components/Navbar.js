@@ -5,10 +5,10 @@ import { ShoppingBag, Heart, ShoppingCart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 const Navbar = () => {
-  const { wishlist, cartCount } = useCart();
+  const { wishlist, cartCount , openDrawer} = useCart();
 
   return (
-    <header className="border-b border-gray-200 bg-white sticky top-0 z-50">
+    <header className="border-b border-gray-200 bg-white sticky top-0 z-30">
       <nav className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold text-gray-900">
           <ShoppingBag size={24} />
@@ -30,14 +30,16 @@ const Navbar = () => {
             )}
           </Link>
 
-          <Link href="/cart" className="relative">
+          <button  
+          onClick={() => openDrawer()} //wrapper Delays execution
+          className="relative cursor-pointer">
             <ShoppingCart size={22} className="text-gray-700 hover:text-black"/>
             {cartCount > 0 && (
               <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
                 {cartCount}
               </span>
             )}
-          </Link>
+          </button>
         </div>
       </nav>
     </header>
