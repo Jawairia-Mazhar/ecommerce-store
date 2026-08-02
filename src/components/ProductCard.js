@@ -6,9 +6,14 @@ import { Heart} from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export default function ProductCard({ product }) {
-    const { addToCart, cart, updateQuantity, toggleWishlist, wishlist } = useCart();
+    const { addToCart, cart, updateQuantity, toggleWishlist, wishlist, openDrawer } = useCart();
     const inWishlist = wishlist.some(item => item.id === product.id);
     const cartItem = cart.find(item => item.id === product.id);
+
+    function handleAddToCart() {
+        addToCart(product);
+        openDrawer();
+    }
 
     return (
         <div className = "flex flex-col mt-2">
@@ -58,7 +63,7 @@ export default function ProductCard({ product }) {
         </div>)
         :
         (<button
-          onClick={() => addToCart(product)}
+          onClick={() => handleAddToCart()}
           className="bg-black text-white text-xs px-3 py-1.5 rounded-md hover:bg-gray-800"
         >
           Add to Cart

@@ -3,7 +3,7 @@
 import { useCart } from "@/context/CartContext";
 
 export default function AddToCartBtn({ product }) {
-  const { cart, addToCart, updateQuantity } = useCart();
+  const { cart, addToCart, updateQuantity, openDrawer } = useCart();
   const cartItem = cart.find((item) => item.id === product.id);
 
   if (cartItem) {
@@ -28,7 +28,10 @@ export default function AddToCartBtn({ product }) {
 
   return (
     <button
-      onClick={() => addToCart(product)}
+      onClick={() => {
+        addToCart(product);
+        openDrawer();
+      }}
       className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800"
     >
       Add to Cart
