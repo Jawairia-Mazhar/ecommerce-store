@@ -1,17 +1,35 @@
 "use client";
 
-import { useState } from "react";
+import React from "react";
 import { Plus, Minus, ShoppingCart, Heart } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 
 export default function ProductActions({ product }) {
-  const [quantity, setQuantity] = useState(1);
-  const { addToCart, wishlist = [], toggleWishlist } = useCart();
+  const { cart = [], addToCart, updateQuantity, wishlist = [], toggleWishlist, openDrawer } = useCart();
+
+  const cartItem = cart.find((item) => item.id === product.id);
+  const quantity = cartItem?.quantity ?? 1;
 
   const isWishlisted = wishlist.some((item) => item.id === product.id);
 
   const handleAddToCart = () => {
-    addToCart({ ...product, quantity });
+    addToCart(product);
+    openDrawer();
+  };
+
+  const handleDecrease = () => {
+    if (!cartItem) return;
+    updateQuantity(product.id, Math.max(0, quantity - 1));
+  };
+
+  const handleIncrease = () => {
+    const max = product.stock ?? 10;
+    if (cartItem) {
+      updateQuantity(product.id, Math.min(max, quantity + 1));
+      return;
+    }
+    addToCart(product);
+    if (max > 1) updateQuantity(product.id, Math.min(max, 2));
   };
 
   return (
@@ -20,8 +38,8 @@ export default function ProductActions({ product }) {
         {/* Quantity Selector */}
         <div className="flex items-center border border-gray-200 rounded-xl bg-gray-50 p-1">
           <button
-            onClick={() => setQuantity((q) => Math.max(1, q - 1))}
-            disabled={quantity <= 1}
+            onClick={handleDecrease}
+            disabled={quantity <= 1 || !cartItem}
             className="p-2.5 text-gray-600 hover:text-black disabled:opacity-30 rounded-lg hover:bg-white transition-colors"
           >
             <Minus size={16} />
@@ -29,9 +47,9 @@ export default function ProductActions({ product }) {
           <span className="w-10 text-center font-bold text-gray-900 text-sm">
             {quantity}
           </span>
-          <button
-            onClick={() => setQuantity((q) => Math.min(product.stock || 10, q + 1))}
-            disabled={quantity >= product.stock}
+            <button
+              onClick={handleIncrease}
+            disabled={product.stock != null ? quantity >= product.stock : false}
             className="p-2.5 text-gray-600 hover:text-black disabled:opacity-30 rounded-lg hover:bg-white transition-colors"
           >
             <Plus size={16} />
