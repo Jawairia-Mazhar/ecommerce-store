@@ -1,6 +1,5 @@
 import { getProducts, getCategories } from "@/lib/api";
 import ProductGrid from "@/components/ProductGrid";
-import SearchBar from "@/components/SearchBar"
 import FilterSidebar from "@/components/FilterSidebar"
 
 export default async function ProductsPage({searchParams}) {
@@ -33,9 +32,8 @@ export default async function ProductsPage({searchParams}) {
 
   return (
     <main className="max-w-7xl mx-auto px-4 py-8">
-      <SearchBar />
+      {/* <FilterSidebar categories={categories} /> */}
       <h1 className="text-2xl font-bold text-gray-900 mb-6">All Products</h1>
-      <FilterSidebar categories={categories} />
       <ProductGrid products={filteredProducts()} /> 
     </main>
   );
