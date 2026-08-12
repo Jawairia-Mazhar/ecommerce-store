@@ -10,7 +10,7 @@ export default function ProductGallery({ images = [], title = "" }) {
     <div className="flex flex-col-reverse sm:flex-row gap-4">
       {/* Thumbnail List */}
       {images.length > 1 && (
-        <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto max-h-[460px] scrollbar-none">
+        <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-y-auto max-h-115 scrollbar-none">
           {images.map((img, idx) => (
             <button
               key={idx}
@@ -28,7 +28,7 @@ export default function ProductGallery({ images = [], title = "" }) {
       )}
 
       {/* Main Image Stage */}
-      <div className="relative flex-1 aspect-square sm:h-[460px] bg-gray-50 rounded-2xl overflow-hidden border border-gray-200/80 shadow-xs flex items-center justify-center p-6">
+      <div className="relative flex-1 aspect-square sm:h-115 bg-gray-50 rounded-2xl overflow-hidden border border-gray-200/80 shadow-xs flex items-center justify-center p-6">
         <Image
           src={selectedImage}
           alt={title}

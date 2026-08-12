@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Search, X, Sparkles } from "lucide-react";
 
-const QUICK_SUGGESTIONS = ["Lipstick", "Perfume", "Serum", "Sofa", "Watches"];
+const QUICK_SUGGESTIONS = ["Lipstick", "Fragrance", "Serum", "Sofa", "Watches"];
 
 export default function SearchBar() {
   const [searchText, setSearchText] = useState("");

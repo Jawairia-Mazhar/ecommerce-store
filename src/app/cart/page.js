@@ -15,7 +15,8 @@ export default function CartPage() {
 
   if (cart.length === 0) {
     return (
-      <main className="max-w-4xl mx-auto px-4 py-16 text-center">
+      <main className="max-w-4xl mx-auto px-4 
+      y-16 text-center">
         <h1 className="text-2xl font-bold mb-4">Your cart is empty</h1>
         <Link href="/products" className="text-blue-600 hover:underline">
           Browse products →

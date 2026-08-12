@@ -20,8 +20,6 @@ import SearchBar from "./SearchBar";
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Shop All", href: "/products" },
-  { name: "Categories", href: "/categories" },
-  { name: "Deals", href: "/deals", badge: "Hot" },
 ];
 
 export default function Navbar() {
@@ -179,7 +177,7 @@ export default function Navbar() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setMobileMenuOpen(false)}
-              className="fixed inset-0 bg-black/40 z-40 lg:hidden backdrop-blur-xs"
+              className="fixed inset-0 bg-black/40 z-40 lg:hidden"
             />
 
             {/* Slide-out Menu Panel */}
@@ -192,7 +190,7 @@ export default function Navbar() {
             >
               <div>
                 {/* Mobile Drawer Header */}
-                <div className="flex items-center justify-between pb-6 border-b border-gray-100">
+                <div className="flex items-center justify-between pb-6  border-b border-gray-100">
                   <Link href="/" className="flex items-center gap-2 text-lg font-bold">
                     <div className="w-8 h-8 rounded-lg bg-accent text-white flex items-center justify-center">
                       <ShoppingBag size={18} />
