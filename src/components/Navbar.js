@@ -16,6 +16,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/context/CartContext";
 import SearchBar from "./SearchBar";
+import { Suspense } from "react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -105,14 +106,16 @@ export default function Navbar() {
 
           {/* SEARCH BAR */}
           <div className="flex-1 max-w-xs sm:max-w-sm md:max-w-md mx-2">
-            <SearchBar />
+            <Suspense fallback={<div className="h-10 bg-gray-100 rounded-md animate-pulse"></div>}>
+              <SearchBar />
+            </Suspense>
           </div>
 
           {/* ACTION BUTTONS (WISHLIST, CART, ACCOUNT) */}
           <div className="flex items-center gap-2 sm:gap-4">
             
             {/* Account / Profile Link */}
-            <Link
+            <Link 
               href="/account"
               className="hidden sm:flex items-center justify-center w-10 h-10 rounded-full text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               title="My Account"
